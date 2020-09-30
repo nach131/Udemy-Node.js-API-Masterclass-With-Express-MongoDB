@@ -4,7 +4,9 @@ import { GraphQLServer } from 'graphql-yoga'
 // Timpos de definiciones (Shema)
 const typeDefs = `
     type Query {
-      me: User!
+      me: User!,
+      posts: Post!
+
 }
 type User {
   id: ID!
@@ -12,7 +14,16 @@ type User {
   email: String!
   age: Int
 }
+
+type Post {
+  id: ID!
+  title: String!
+  body: String!
+  published: Boolean!
+}
+
 `
+
 
 //  Resolvers
 
@@ -25,7 +36,17 @@ const resolvers = {
         email: 'pedro@gmail.com',
         age: 50
       }
+    },
+    posts() {
+      return {
+        id: 'der2445',
+        title: 'El titulo del post',
+        body: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit, nostrum. Sapiente tempore eius debitis vero, facilis nisi at suscipit magnam veniam quasi quibusdam, exercitationem dicta, quas natus commodi mollitia quos!',
+        published: true
+      }
     }
+
+
   }
 
 }
