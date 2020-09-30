@@ -33,3 +33,5 @@ Type me,
 ## 11. Operation Arguments
 
 Query con propiedades
+
+Sumar las propiedades que delara el usuario

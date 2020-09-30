@@ -5,7 +5,8 @@ import { GraphQLServer } from 'graphql-yoga'
 const typeDefs = `
     type Query {
       greeting(name: String): String!
-      me: User!,
+      add(a: Float!, b: Float!): Float!
+      me: User!
       posts: Post!
 
 }
@@ -25,12 +26,17 @@ type Post {
 
 `
 
-
 //  Resolvers
 
 const resolvers = {
   Query: {
-    greeting(parent, args, ctx, info){
+    add(parent, args, ctx, info) {
+      console.log(args.a, args.b)
+      return args.a + args.b
+
+    },
+
+    greeting(parent, args, ctx, info) {
       console.log(args)
       if (args.name) {
         return `Holaaa, ${args.name}`
