@@ -4,6 +4,7 @@ import { GraphQLServer } from 'graphql-yoga'
 // Timpos de definiciones (Shema)
 const typeDefs = `
     type Query {
+      greeting(name: String): String!
       me: User!,
       posts: Post!
 
@@ -29,6 +30,14 @@ type Post {
 
 const resolvers = {
   Query: {
+    greeting(parent, args, ctx, info){
+      console.log(args)
+      if (args.name) {
+        return `Holaaa, ${args.name}`
+      } else {
+        return 'Holiii sin nombre'
+      }
+    },
     me() {
       return {
         id: 'abc123',

@@ -30,3 +30,6 @@ Instar Modemon
 ## 10. Creating Custom Types
 Type me, 
 
+## 11. Operation Arguments
+
+Query con propiedades
