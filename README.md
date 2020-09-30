@@ -35,3 +35,5 @@ Type me,
 Query con propiedades
 
 Sumar las propiedades que delara el usuario
+
+## 12. Working with Arrays Part I
