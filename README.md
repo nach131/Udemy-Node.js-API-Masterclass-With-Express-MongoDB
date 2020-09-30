@@ -20,4 +20,8 @@ https://spec.graphql.org/
 https://github.com/prisma-labs/graphql-yoga
 
 ## 8. GraphQL Scalar Types
+Diferentes tipos de datos
+
 String, Boolean, Int, Float,I D
+
+## 9. Live Reload for GraphQL-Yoga

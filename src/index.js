@@ -30,7 +30,7 @@ const resolvers = {
       return null
     },
     rating() {
-      return 5
+      return 50
     },
     inStock() {
       return true
