@@ -13,3 +13,8 @@ Inicio creacion GraphQL servere (solo mensaje)
 export desde un archivo importado en el index
 
 exportar con una propiedad
+## 7. Creating Your Own GraphQL API
+Toda la documentacion: 
+https://spec.graphql.org/
+
+https://github.com/prisma-labs/graphql-yoga

@@ -1,11 +1,40 @@
-import myCurrentLocation, { getGreating, message, name } from './myModule'
 
-import add, { subtract } from './6_Ejercicio'
+import { GraphQLServer } from 'graphql-yoga'
 
-// console.log(message)
-// console.log(name)
-// console.log(myCurrentLocation)
-// console.log(getGreating('Jessica'))
+// Timpos de definiciones (Shema)
+const typeDefs = `
+type Query {
+  hello: String!
+  name: String!
+  location: String!
+  bio: String!
+}
+`
 
-console.log(add(4,5))
-console.log(subtract(4,5))
+//  Resolvers
+
+const resolvers = {
+  Query: {
+    hello() {
+      return 'Esto sale de reolvers'
+    },
+    name() {
+      return 'Mi nombre es pedro'
+    },
+    location(){
+      return 'Barcelona'
+    },
+    bio(){
+      return 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas alias maxime quidem, assumenda, nam aperiam minima repudiandae rem accusantium incidunt aliquid delectus ipsa molestias doloribus? Dolor nostrum quas inventore consectetur!'
+    }
+  }
+}
+
+const server = new GraphQLServer({
+  typeDefs,
+  resolvers
+})
+
+server.start(() => {
+  console.log('Servidor On-line')
+})
