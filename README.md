@@ -25,3 +25,8 @@ Diferentes tipos de datos
 String, Boolean, Int, Float,I D
 
 ## 9. Live Reload for GraphQL-Yoga
+Instar Modemon
+
+## 10. Creating Custom Types
+Type me, 
+

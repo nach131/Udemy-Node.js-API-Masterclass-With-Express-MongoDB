@@ -4,12 +4,13 @@ import { GraphQLServer } from 'graphql-yoga'
 // Timpos de definiciones (Shema)
 const typeDefs = `
     type Query {
-    id: ID!
-    title : String!
-    price: Float!
-    releaseYear: Int
-    rating: Float
-    inStock: Boolean!
+      me: User!
+}
+type User {
+  id: ID!
+  name: String!
+  email: String!
+  age: Int
 }
 `
 
@@ -17,31 +18,24 @@ const typeDefs = `
 
 const resolvers = {
   Query: {
-    id() {
-      return 'abc123'
-    },
-    title() {
-      return 'Boligrafo'
-    },
-    price() {
-      return 12.99
-    },
-    releaseYear() {
-      return null
-    },
-    rating() {
-      return 50
-    },
-    inStock() {
-      return true
+    me() {
+      return {
+        id: 'abc123',
+        name: 'Pedro',
+        email: 'pedro@gmail.com',
+        age: 50
+      }
     }
-  }}
+  }
 
-  const server = new GraphQLServer({
-    typeDefs,
-    resolvers
-  })
+}
+
+
+const server = new GraphQLServer({
+  typeDefs,
+  resolvers
+})
 
 server.start(() => {
-    console.log('Servidor On-line')
-  })
+  console.log('Servidor On-line')
+})
