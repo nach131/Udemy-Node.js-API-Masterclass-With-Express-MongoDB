@@ -32,7 +32,7 @@ type Post {
 const resolvers = {
   Query: {
     add(parent, args, ctx, info) {
-      console.log(args.a, args.b)
+      console.log(args)
       if (args.numbers.lenght === 0) {
         return 0
       }

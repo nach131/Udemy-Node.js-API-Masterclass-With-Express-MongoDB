@@ -37,3 +37,11 @@ Query con propiedades
 Sumar las propiedades que delara el usuario
 
 ## 12. Working with Arrays Part I
+Para reducir una array en un valor simple
+
+https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/Array/reduce
+
+reducer()
+
+## 13. Working with Arrays Part II
+
