@@ -25,11 +25,11 @@ const posts = [{
 },{
   id: '2',
   title: 'Segundo post',
-  body: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit, nostrum. Sapiente tempore eius debitis vero, facilis nisi at suscipit magnam veniam quasi quibusdam, exercitationem dicta, quas natus commodi mollitia quos!',
+  body: 'Tomatede dedadwead des dcxweac dxwaecx dweacdw cwaec wacascwawea',
   published: false
 },{
   id: '3',
-  title: 'Tercero post',
+  title: 'Tercero',
   body: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit, nostrum. Sapiente tempore eius debitis vero, facilis nisi at suscipit magnam veniam quasi quibusdam, exercitationem dicta, quas natus commodi mollitia quos!',
   published: true
 }

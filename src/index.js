@@ -52,7 +52,9 @@ const resolvers = {
         return posts
       }
       return posts.filter((post)=> {
-        return post.title.toLocaleLowerCase().includes(args.query.toLocaleLowerCase())
+        const isTitleMatch = post.title.toLocaleLowerCase().includes(args.query.toLocaleLowerCase())
+        const isBodyMatch = post.body.toLocaleLowerCase().includes(args.query.toLocaleLowerCase())
+        return isTitleMatch || isBodyMatch  
       })
     }
 
