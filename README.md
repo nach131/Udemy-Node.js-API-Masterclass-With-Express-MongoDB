@@ -45,3 +45,4 @@ reducer()
 
 ## 13. Working with Arrays Part II
 
+Query Filtrando nombre del usuario en la array

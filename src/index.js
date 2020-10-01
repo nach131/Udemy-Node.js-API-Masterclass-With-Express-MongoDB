@@ -1,12 +1,29 @@
 
 import { GraphQLServer } from 'graphql-yoga'
 
+// Demo user data
+const users = [{
+  id: '1',
+  name: 'Pedro',
+  email: 'pedro@gmail.com',
+  age: 27
+}, {
+  id: '2',
+  name: 'Bulma',
+  email: 'bulma@gmail.com'
+},
+{
+  id: '3',
+  name: 'Pablo',
+  email: 'Pablo@gmail.com'
+}
+]
+
+
 // Timpos de definiciones (Shema)
 const typeDefs = `
     type Query {
-      greeting(name: String): String!
-      add(numbers: [Float!]!): Float!
-      grades: [Int!]!
+     users(query: String): [User!]!
       me: User!
       posts: Post!
 
@@ -31,28 +48,13 @@ type Post {
 
 const resolvers = {
   Query: {
-    add(parent, args, ctx, info) {
-      console.log(args)
-      if (args.numbers.lenght === 0) {
-        return 0
+    users(parents, args, ctx, info) {
+      if (!args.query) {
+        return users
       }
-      // [1, 5, 10, 2]
-      return args.numbers.reduce((accumulator, currentValue) => {
-        return accumulator + currentValue
+      return users.filter((user) => {
+        return user.name.toLocaleLowerCase().includes(args.query.toLocaleLowerCase())
       })
-    },
-
-    greeting(parent, args, ctx, info) {
-      console.log(args)
-      if (args.name) {
-        return `Holaaa, ${args.name}`
-      } else {
-        return 'Holiii sin nombre'
-      }
-    },
-
-    grades(parent, args, ctx, info) {
-      return [99, 80, 93,]
     },
     me() {
       return {
