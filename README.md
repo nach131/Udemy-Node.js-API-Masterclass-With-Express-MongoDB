@@ -46,3 +46,6 @@ reducer()
 ## 13. Working with Arrays Part II
 
 Query Filtrando nombre del usuario en la array
+
+## 14. Relational Data Basics
+realacionar simple

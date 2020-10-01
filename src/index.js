@@ -22,6 +22,7 @@ type Post {
   title: String!
   body: String!
   published: Boolean!
+  author: User!
 }
 
 `
@@ -30,7 +31,7 @@ type Post {
 
 const resolvers = {
   Query: {
-    users(parents, args, ctx, info) {
+    users(parent, args, ctx, info) {
       if (!args.query) {
         return users
       }
@@ -47,17 +48,23 @@ const resolvers = {
       }
     },
 
-    posts(parents, args, ctx, info){
-      if(!args.query){
+    posts(parents, args, ctx, info) {
+      if (!args.query) {
         return posts
       }
-      return posts.filter((post)=> {
+      return posts.filter((post) => {
         const isTitleMatch = post.title.toLocaleLowerCase().includes(args.query.toLocaleLowerCase())
         const isBodyMatch = post.body.toLocaleLowerCase().includes(args.query.toLocaleLowerCase())
-        return isTitleMatch || isBodyMatch  
+        return isTitleMatch || isBodyMatch
       })
     }
-
+  },
+  Post: {
+    author(parent, args, ctx, info) {
+      return users.find((user) => {
+        return user.id === parent.author
+      })
+    }
   }
 
 }
