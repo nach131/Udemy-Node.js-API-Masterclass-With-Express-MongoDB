@@ -1,31 +1,13 @@
 
 import { GraphQLServer } from 'graphql-yoga'
-
-// Demo user data
-const users = [{
-  id: '1',
-  name: 'Pedro',
-  email: 'pedro@gmail.com',
-  age: 27
-}, {
-  id: '2',
-  name: 'Bulma',
-  email: 'bulma@gmail.com'
-},
-{
-  id: '3',
-  name: 'Pablo',
-  email: 'Pablo@gmail.com'
-}
-]
-
+import { users, posts } from './datos'
 
 // Timpos de definiciones (Shema)
 const typeDefs = `
     type Query {
      users(query: String): [User!]!
       me: User!
-      posts: Post!
+      posts(query: String): [Post!]!
 
 }
 type User {
@@ -64,15 +46,15 @@ const resolvers = {
         age: 50
       }
     },
-    posts() {
-      return {
-        id: 'der2445',
-        title: 'El titulo del post',
-        body: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit, nostrum. Sapiente tempore eius debitis vero, facilis nisi at suscipit magnam veniam quasi quibusdam, exercitationem dicta, quas natus commodi mollitia quos!',
-        published: true
-      }
-    }
 
+    posts(parents, args, ctx, info){
+      if(!args.query){
+        return posts
+      }
+      return posts.filter((post)=> {
+        return post.title.toLocaleLowerCase().includes(args.query.toLocaleLowerCase())
+      })
+    }
 
   }
 
