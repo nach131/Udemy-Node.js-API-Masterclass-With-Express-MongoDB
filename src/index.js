@@ -1,13 +1,14 @@
 
 import { GraphQLServer } from 'graphql-yoga'
-import { users, posts } from './datos'
+import { users, posts, comments } from './datos'
 
 // Timpos de definiciones (Shema)
 const typeDefs = `
     type Query {
-     users(query: String): [User!]!
       me: User!
+      users(query: String): [User!]!
       posts(query: String): [Post!]!
+      comments: [Comment!]!
 
 }
 type User {
@@ -25,6 +26,10 @@ type Post {
   published: Boolean!
   author: User!
 }
+type Comment {
+  id: ID!
+  body: String!
+}
 
 `
 
@@ -32,14 +37,7 @@ type Post {
 
 const resolvers = {
   Query: {
-    users(parent, args, ctx, info) {
-      if (!args.query) {
-        return users
-      }
-      return users.filter((user) => {
-        return user.name.toLocaleLowerCase().includes(args.query.toLocaleLowerCase())
-      })
-    },
+
     me() {
       return {
         id: 'abc123',
@@ -49,17 +47,31 @@ const resolvers = {
       }
     },
 
-    posts(parents, args, ctx, info) {
+    users(parent, args, ctx, info) {
       if (!args.query) {
-        return posts
+        return users
       }
-      return posts.filter((post) => {
-        const isTitleMatch = post.title.toLocaleLowerCase().includes(args.query.toLocaleLowerCase())
-        const isBodyMatch = post.body.toLocaleLowerCase().includes(args.query.toLocaleLowerCase())
-        return isTitleMatch || isBodyMatch
+      return users.filter((user) => {
+        return user.name.toLocaleLowerCase().includes(args.query.toLocaleLowerCase())
       })
+    },
+
+  posts(parent, args, ctx, info) {
+    if (!args.query) {
+      return posts
     }
+    return posts.filter((post) => {
+      const isTitleMatch = post.title.toLocaleLowerCase().includes(args.query.toLocaleLowerCase())
+      const isBodyMatch = post.body.toLocaleLowerCase().includes(args.query.toLocaleLowerCase())
+      return isTitleMatch || isBodyMatch
+    })
   },
+  comments(parent, args, ctx, info){
+    return comments
+  }
+
+  },
+
   Post: {
     author(parent, args, ctx, info) {
       return users.find((user) => {
@@ -67,14 +79,16 @@ const resolvers = {
       })
     }
   },
+
   User: {
-    posts(parent, args, ctx, info){
-      return posts.filter((post)=>{
+    posts(parent, args, ctx, info) {
+      return posts.filter((post) => {
         return post.author === parent.id
       })
     }
   }
-  
+
+
 }
 
 

@@ -50,3 +50,5 @@ Query Filtrando nombre del usuario en la array
 ## 14. Relational Data Basics
 realacionar simple
 ## 15. Relational Data Arrays
+Relaciones de usuarios y Posts
+## 16. Comment Challenge Part I
