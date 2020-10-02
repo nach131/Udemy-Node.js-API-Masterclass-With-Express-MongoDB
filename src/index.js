@@ -17,6 +17,7 @@ type User {
   email: String!
   age: Int
   posts : [Post!]!
+  comments: [Comment!]!
 }
 
 type Post {
@@ -29,6 +30,7 @@ type Post {
 type Comment {
   id: ID!
   body: String!
+  author: User!
 }
 
 `
@@ -67,7 +69,9 @@ const resolvers = {
     })
   },
   comments(parent, args, ctx, info){
-    return comments
+    if(!args.query){
+      return comments
+    }
   }
 
   },
@@ -85,9 +89,21 @@ const resolvers = {
       return posts.filter((post) => {
         return post.author === parent.id
       })
+    },
+    comments(parent, args, ctx, info){
+      return comments.filter((comment) => {
+        return comment.author === parent.id
+      })
+    }
+  },
+
+  Comment: {
+    author(parent, args, ctx, info) {
+      return users.find((user) => {
+        return user.id === parent.author
+      })
     }
   }
-
 
 }
 

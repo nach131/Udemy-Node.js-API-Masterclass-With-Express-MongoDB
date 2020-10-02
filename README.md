@@ -52,3 +52,5 @@ realacionar simple
 ## 15. Relational Data Arrays
 Relaciones de usuarios y Posts
 ## 16. Comment Challenge Part I
+## 17. Comment Challenge Part II\
+relaciones entre comment y usuarios
