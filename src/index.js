@@ -1,6 +1,7 @@
 
 import { GraphQLServer } from 'graphql-yoga'
 import { users, posts, comments } from './datos'
+import { v4 as uuidv4 } from 'uuid';
 
 // Timpos de definiciones (Shema)
 const typeDefs = `
@@ -9,8 +10,13 @@ const typeDefs = `
       users(query: String): [User!]!
       posts(query: String): [Post!]!
       comments: [Comment!]!
-
 }
+
+type Mutation {
+    createUser(name: String!, email: String!, age: Int): User!
+}
+
+
 type User {
   id: ID!
   name: String!
@@ -60,22 +66,38 @@ const resolvers = {
       })
     },
 
-  posts(parent, args, ctx, info) {
-    if (!args.query) {
-      return posts
+    posts(parent, args, ctx, info) {
+      if (!args.query) {
+        return posts
+      }
+      return posts.filter((post) => {
+        const isTitleMatch = post.title.toLocaleLowerCase().includes(args.query.toLocaleLowerCase())
+        const isBodyMatch = post.body.toLocaleLowerCase().includes(args.query.toLocaleLowerCase())
+        return isTitleMatch || isBodyMatch
+      })
+    },
+    comments(parent, args, ctx, info) {
+      if (!args.query) {
+        return comments
+      }
     }
-    return posts.filter((post) => {
-      const isTitleMatch = post.title.toLocaleLowerCase().includes(args.query.toLocaleLowerCase())
-      const isBodyMatch = post.body.toLocaleLowerCase().includes(args.query.toLocaleLowerCase())
-      return isTitleMatch || isBodyMatch
-    })
-  },
-  comments(parent, args, ctx, info){
-    if(!args.query){
-      return comments
-    }
-  }
 
+  },
+  Mutation: {
+    createUser(parent, args, ctx, info) {
+      const emailTaken = users.some((user) => user.email === args.email)
+      if (emailTaken) {
+        throw new Error('Email taken.')
+      }
+      const user = {
+        id: uuidv4(),
+        name: args.name,
+        email: args.email,
+        age: args.age
+      }
+      users.push(user)
+      return user
+    }
   },
 
   Post: {
@@ -86,9 +108,9 @@ const resolvers = {
     },
     comments(parent, args, ctx, info) {
       return comments.filter((comment) => {
-          return comment.post === parent.id
+        return comment.post === parent.id
       })
-  }
+    }
   },
 
   User: {
@@ -97,7 +119,7 @@ const resolvers = {
         return post.author === parent.id
       })
     },
-    comments(parent, args, ctx, info){
+    comments(parent, args, ctx, info) {
       return comments.filter((comment) => {
         return comment.author === parent.id
       })
@@ -109,7 +131,7 @@ const resolvers = {
         return user.id === parent.author
       })
     },
-    post(parent, args, ctx, info){
+    post(parent, args, ctx, info) {
       return posts.find((post) => {
         return post.id === parent.post
       })

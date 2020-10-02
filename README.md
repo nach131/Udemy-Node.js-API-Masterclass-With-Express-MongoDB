@@ -56,3 +56,10 @@ Relaciones de usuarios y Posts
 relaciones entre comment y usuarios
 ## 18. Comment Challenge Part III
 Relacines comment con post
+
+# 3 Basic Mutations
+## 2. Creating Data with Mutations Part I
+npm uuid (General id)
+https://www.npmjs.com/package/uuid
+
+Crea un usuario
