@@ -61,3 +61,15 @@ mutation {
     }
   }
 }
+
+## Crear comentrario de un post
+mutation {
+  createComment(
+    body: "Comentario de krilin"
+    author: "af138d5e-a872-4ace-aa0e-12c1d920ac40"
+    post: "7a073311-b36d-4c18-83b4-4ec850b449d4"
+  ) {
+    id
+    body
+  }
+}
