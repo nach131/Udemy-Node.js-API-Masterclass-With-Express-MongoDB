@@ -1,6 +1,6 @@
 
 // Demo user data
-let users = [{
+const users = [{
   id: '1',
   name: 'Pedro',
   email: 'pedro@gmail.com',
@@ -17,7 +17,7 @@ let users = [{
 }
 ]
 // demo post data
-let posts = [{
+const posts = [{
   id: '1',
   title: 'El titulo del post',
   body: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit, nostrum. Sapiente tempore eius debitis vero, facilis nisi at suscipit magnam veniam quasi quibusdam, exercitationem dicta, quas natus commodi mollitia quos!',
@@ -38,7 +38,7 @@ let posts = [{
 }
 ]
 
-let comments = [{
+const comments = [{
   id: '1',
   body: 'Esto es el texto del comentario numero uno',
   author: '1',
@@ -66,5 +66,10 @@ let comments = [{
 
 }
 ]
+const db = {
+  users,
+  posts,
+  comments
+}
 
-export { users, posts, comments }
+export { db as default}

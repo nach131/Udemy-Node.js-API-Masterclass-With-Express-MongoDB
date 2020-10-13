@@ -82,3 +82,9 @@ Borrado de Usuario, con sus posts y comentarios
 
 ## 7. Deleting Data with Mutations Part II
 Borrar un post y borrar comment
+
+## 
+ Organizar proyecto,
+ Separacion Scheme y db los datos
+
+Configurar nodemo para ejecute schema.graphql
