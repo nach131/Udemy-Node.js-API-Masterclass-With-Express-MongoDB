@@ -79,3 +79,6 @@ Crean CreateUserInput, CreatePostInput, CreateCommentinput y las data
 
 ## 6. Deleting Data with Mutations Part I
 Borrado de Usuario, con sus posts y comentarios
+
+## 7. Deleting Data with Mutations Part II
+Borrar un post y borrar comment
