@@ -1,6 +1,6 @@
 
 // Demo user data
-const users = [{
+let users = [{
   id: '1',
   name: 'Pedro',
   email: 'pedro@gmail.com',
@@ -17,7 +17,7 @@ const users = [{
 }
 ]
 // demo post data
-const posts = [{
+let posts = [{
   id: '1',
   title: 'El titulo del post',
   body: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit, nostrum. Sapiente tempore eius debitis vero, facilis nisi at suscipit magnam veniam quasi quibusdam, exercitationem dicta, quas natus commodi mollitia quos!',
@@ -38,7 +38,7 @@ const posts = [{
 }
 ]
 
-const comments = [{
+let comments = [{
   id: '1',
   body: 'Esto es el texto del comentario numero uno',
   author: '1',

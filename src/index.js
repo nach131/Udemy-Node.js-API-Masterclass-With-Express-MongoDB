@@ -1,7 +1,74 @@
 
 import { GraphQLServer } from 'graphql-yoga'
-import { users, posts, comments } from './datos'
 import { v4 as uuidv4 } from 'uuid';
+
+let users = [{
+  id: '1',
+  name: 'Pedro',
+  email: 'pedro@gmail.com',
+  age: 27
+}, {
+  id: '2',
+  name: 'Bulma',
+  email: 'bulma@gmail.com'
+},
+{
+  id: '3',
+  name: 'Pablo',
+  email: 'Pablo@gmail.com'
+}
+]
+// demo post data
+let posts = [{
+  id: '1',
+  title: 'El titulo del post',
+  body: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit, nostrum. Sapiente tempore eius debitis vero, facilis nisi at suscipit magnam veniam quasi quibusdam, exercitationem dicta, quas natus commodi mollitia quos!',
+  published: true,
+  author: '1'
+}, {
+  id: '2',
+  title: 'Segundo post',
+  body: 'Tomatede dedadwead des dcxweac dxwaecx dweacdw cwaec wacascwawea',
+  published: false,
+  author: '1'
+}, {
+  id: '3',
+  title: 'Tercero',
+  body: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit, nostrum. Sapiente tempore eius debitis vero, facilis nisi at suscipit magnam veniam quasi quibusdam, exercitationem dicta, quas natus commodi mollitia quos!',
+  published: true,
+  author: '2'
+}
+]
+
+let comments = [{
+  id: '1',
+  body: 'Esto es el texto del comentario numero uno',
+  author: '1',
+  post: '1'
+
+}, {
+  id: '2',
+  body: 'Esto es el texto del comentario numero DOS',
+  author: '1',
+  post: '2'
+
+
+}, {
+  id: '3',
+  body: 'Esto es el texto del comentario numero TRES',
+  author: '2',
+  post: '3'
+
+
+}, {
+  id: '4',
+  body: 'Esto es el texto del comentario numero CUATRO',
+  author: '2',
+  post: '1'
+
+}
+]
+
 
 // Timpos de definiciones (Shema)
 const typeDefs = `
@@ -14,6 +81,7 @@ const typeDefs = `
 
 type Mutation {
  createUser(data: CreateUserInput!): User!
+ deleteUser(id: ID!): User!
  createPost(data: CreatePostInput!): Post!
  createComment(data: CreateCommentinput!): Comment!
 }
@@ -82,7 +150,7 @@ const resolvers = {
         return users
       }
       return users.filter((user) => {
-        return user.name.toLocaleLowerCase().includes(args.query.toLocaleLowerCase())
+        return user.name.toLowerCase().includes(args.query.toLowerCase())
       })
     },
 
@@ -91,8 +159,8 @@ const resolvers = {
         return posts
       }
       return posts.filter((post) => {
-        const isTitleMatch = post.title.toLocaleLowerCase().includes(args.query.toLocaleLowerCase())
-        const isBodyMatch = post.body.toLocaleLowerCase().includes(args.query.toLocaleLowerCase())
+        const isTitleMatch = post.title.toLowerCase().includes(args.query.toLowerCase())
+        const isBodyMatch = post.body.toLowerCase().includes(args.query.toLowerCase())
         return isTitleMatch || isBodyMatch
       })
     },
@@ -116,6 +184,27 @@ const resolvers = {
       users.push(user)
       return user
     },
+
+    deleteUser(parent, args, ctx, info) {
+      const userIndex = users.findIndex((user) => user.id === args.id)
+      if (userIndex === -1) {
+        throw new Error('Usuario no encontrado')
+      }
+      const deletedUsers = users.splice(userIndex, 1)
+
+      posts = posts.filter((post) => {
+        const match = post.author === args.id
+
+        if (match) {
+          comments = comments.filter((comment) => comment.post !== post.id)
+        }
+
+        return !match
+      })
+      comments = comments.filter((comment) => comment.author !== args.id)
+      return deletedUsers[0]
+    },
+
     createPost(parent, args, ctx, info) {
       const userExists = users.some((user) => user.id === args.data.author)
       if (!userExists) {
@@ -123,7 +212,7 @@ const resolvers = {
       }
       const post = {
         id: uuidv4(),
-       ...args.data
+        ...args.data
       }
       posts.push(post)
       return post
@@ -139,7 +228,7 @@ const resolvers = {
       }
       const comment = {
         id: uuidv4(),
-       ...args.data
+        ...args.data
       }
       comments.push(comment)
       return comment

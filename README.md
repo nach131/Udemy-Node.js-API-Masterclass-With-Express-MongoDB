@@ -74,3 +74,8 @@ https://www.npmjs.com/package/babel-plugin-transform-object-rest-spread
 Copia propiedades de un objeto a otro facil
 
 ## 5. The Input Type
+
+Crean CreateUserInput, CreatePostInput, CreateCommentinput y las data
+
+## 6. Deleting Data with Mutations Part I
+Borrado de Usuario, con sus posts y comentarios
