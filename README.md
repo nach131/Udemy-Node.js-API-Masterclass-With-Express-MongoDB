@@ -65,9 +65,12 @@ https://www.npmjs.com/package/uuid
 Crea un usuario
 ## 3. Creating Data with Mutations Part II
 createPost y creatComment
+
 ## 4. The Object Spread Operator with Node.js
 https://www.npmjs.com/package/babel-plugin-transform-object-rest-spread
 
  npm install --save-dev babel-plugin-transform-object-rest-spread
 
 Copia propiedades de un objeto a otro facil
+
+## 5. The Input Type
