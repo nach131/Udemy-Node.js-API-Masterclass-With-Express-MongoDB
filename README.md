@@ -91,3 +91,6 @@ Configurar nodemo para ejecute schema.graphql
 
 ## 9. A Pro GraphQL Project Structure Part II
 Separar los resolver en archivos
+
+## 10. Updating Data with Mutations Part I
+Update User

@@ -73,3 +73,13 @@ mutation {
     body
   }
 }
+
+----------------------------------
+mutation {
+  updateUser(id: "1", data: { name: "Cort Perit", email: "cor@gmail.com", age: 123 }) {
+    id
+    name
+    email
+    age
+  }
+}
