@@ -83,3 +83,30 @@ mutation {
     age
   }
 }
+
+-----------------------------------------
+subscription {
+  comment(postId: "1") {
+    id
+    body
+    author {
+      id
+      name
+    }
+  }
+}
+-----------------------------------------
+subscription {
+  post {
+    mutation
+    data {
+      id
+      body
+      author {
+        id
+        name
+      }
+    }
+  }
+}
+-----------------------------------------

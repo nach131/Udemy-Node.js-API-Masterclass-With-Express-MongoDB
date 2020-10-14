@@ -115,3 +115,6 @@ Subcripcion cuando unn nuevo post se ha creado
 Subcripción cuando se actualiza los datos del post,
 
 Cuando se published: false or true
+
+## 4.6. Expanding the Comments Subscription for Edits and Deletions
+Subscripción cunado se crea, actualiza o se borra un comentario
