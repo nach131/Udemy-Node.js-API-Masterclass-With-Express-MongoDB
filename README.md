@@ -107,3 +107,9 @@ Crea subscription count, cuenta +1 cada segundo
 
 ## 4.3. Setting up a Comments Subscription
 De la subcripcion anterior escucha cadad vez que alguien hace un comentario en un post
+
+## 4.4. Setting up a Posts Subscription
+Subcripcion cuando unn nuevo post se ha creado 
+
+## 4.5. Expanding the Posts Subscription for Edits and Deletions
+
