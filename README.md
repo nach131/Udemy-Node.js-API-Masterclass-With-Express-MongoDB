@@ -94,3 +94,6 @@ Separar los resolver en archivos
 
 ## 10. Updating Data with Mutations Part I
 Update User
+
+## 11. Updating Data with Mutations Part II
+Update Post y UpdateComent

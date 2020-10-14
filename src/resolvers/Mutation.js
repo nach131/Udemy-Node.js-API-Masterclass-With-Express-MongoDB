@@ -57,7 +57,7 @@ const Mutation = {
       user.email = data.email
     }
 
-    if (typeof data.name === 'string'){
+    if (typeof data.name === 'string') {
       user.name = data.name
     }
 
@@ -81,7 +81,6 @@ const Mutation = {
     db.posts.push(post)
     return post
   },
-
   deletePost(parent, args, { db }, info) {
     const postIndex = db.posts.findIndex((post) => post.id === args.id)
     if (postIndex === -1) {
@@ -93,6 +92,30 @@ const Mutation = {
 
     return deletedPosts[0]
   },
+
+  updatePost(parent, args, { db }, info) {
+    const { id, data } = args
+    const post = db.posts.find((post) => post.id === id)
+
+    if (!post) {
+      throw new Error('Post no encontrado')
+    }
+
+    if (typeof data.title === 'string') {
+      post.title = data.title
+    }
+
+    if (typeof data.body === 'string') {
+      post.body = data.body
+    }
+
+    if (typeof data.published === 'boolean') {
+      post.published = data.published
+    }
+    return post
+  },
+
+
 
   createComment(parent, args, { db }, info) {
     const userExists = db.users.some((user) => user.id === args.data.author) // esto es lo mismo pero reducido
@@ -121,6 +144,20 @@ const Mutation = {
     const deletedComments = db.comments.splice(commentIndex, 1)
 
     return deletedComments[0]
+  },
+
+  updateComment(parent, args, { db }, info) {
+    const { id, data } = args
+    const comment = db.comments.find((comment) => comment.id === id)
+
+    if(!comment) {
+      throw new Error("Commentario no encontrado")
+    }
+
+    if (typeof data.body === 'string') {
+      comment.body = data.body
+    }
+    return comment
   }
 }
 export { Mutation as default }
