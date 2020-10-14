@@ -118,3 +118,10 @@ Cuando se published: false or true
 
 ## 4.6. Expanding the Comments Subscription for Edits and Deletions
 Subscripción cunado se crea, actualiza o se borra un comentario
+
+# 5. Database Storage with Prisma
+## 5.3. Prisma Mac Setup
+Crea una app en Heroku, crea BD postgressql, pgadmin, instalar docker
+
+## 5.6. Prisma 101
+npm install -g prisma
