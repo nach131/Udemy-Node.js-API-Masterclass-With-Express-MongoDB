@@ -112,4 +112,6 @@ De la subcripcion anterior escucha cadad vez que alguien hace un comentario en u
 Subcripcion cuando unn nuevo post se ha creado 
 
 ## 4.5. Expanding the Posts Subscription for Edits and Deletions
+Subcripción cuando se actualiza los datos del post,
 
+Cuando se published: false or true
