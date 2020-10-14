@@ -6,10 +6,20 @@ const Subscription = {
       setInterval(() => {
         count++
         pubsub.publish('count', {
-          count: count
+          count
         })
-      }, 5000)
+      }, 1000)
       return pubsub.asyncIterator('count')
+    }
+  },
+  comment: {
+    subscribe(parent, { postId }, { db, pubsub }, info) {
+      const post = db.posts.find((post) => post.id === postId && post.published)
+      if (!post) {
+        throw new Error('Post no encontrado')
+      }
+
+      return pubsub.asyncIterator(`comment ${postId}`) 
     }
   }
 }
