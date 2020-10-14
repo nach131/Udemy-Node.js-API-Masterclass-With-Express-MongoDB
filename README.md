@@ -97,3 +97,10 @@ Update User
 
 ## 11. Updating Data with Mutations Part II
 Update Post y UpdateComent
+
+# 4. Basics Subscriptions
+## 1. Section Intro GraphQL Basics Subscriptions
+Descripción de lo tema
+
+## 2. GraphQL Subscription Basics
+Crea subscription count, cuenta +1 cada segundo
