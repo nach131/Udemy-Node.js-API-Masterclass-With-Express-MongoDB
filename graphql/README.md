@@ -125,3 +125,13 @@ Crea una app en Heroku, crea BD postgressql, pgadmin, instalar docker
 
 ## 5.6. Prisma 101
 npm install -g prisma
+
+prisma init prisma
+
+Dentro de la carpeta prisma 
+
+docker-compose up -d
+
+prisma deploy
+
+http://localhost:4466/
