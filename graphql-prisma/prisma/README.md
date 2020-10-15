@@ -143,3 +143,7 @@ Crea un usuario, elimina usuario
 Crear Mutacition Post, Query...
 
 ## 5.9. Adding Comment Type to Prisma
+Crear comment
+
+## 5.10. Integrating Prisma into a Node.js Project
+
