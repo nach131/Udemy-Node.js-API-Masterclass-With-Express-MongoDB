@@ -141,3 +141,5 @@ Crea un usuario, elimina usuario
 
 ## 5.8. Add Post type to Prisma
 Crear Mutacition Post, Query...
+
+## 5.9. Adding Comment Type to Prisma
