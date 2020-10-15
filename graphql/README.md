@@ -135,3 +135,9 @@ docker-compose up -d
 prisma deploy
 
 http://localhost:4466/
+
+## 5.7. Exploring the Prisma GraphQL API
+Crea un usuario, elimina usuario
+
+## 5.8. Add Post type to Prisma
+Crear Mutacition Post, Query...
