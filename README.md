@@ -146,4 +146,12 @@ Crear Mutacition Post, Query...
 Crear comment
 
 ## 5.10. Integrating Prisma into a Node.js Project
+npm install prisma-binding
 
+https://github.com/Urigo/graphql-cli
+
+npm install graphql-cli
+
+Para crear el schema despues deploy prisma
+ 
+npm run get-schema
