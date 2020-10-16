@@ -159,3 +159,7 @@ npm run get-schema
 ## 5.11. Using Prisma Bindings
 
 Usar prisma para fecht de datos en consola
+
+## 5.12. Mutations with Prisma Bindings
+
+Crea un post desde node
