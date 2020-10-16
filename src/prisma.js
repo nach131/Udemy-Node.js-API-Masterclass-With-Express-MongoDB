@@ -15,20 +15,38 @@ const prisma = new Prisma({
 //     console.log(JSON.stringify(data, undefined, 2))
 // })
 
-prisma.mutation.createPost({
-    data: {
-        title: "Esto esta desactivado",
-        body: "",
-        published: false,
-        author: {
-            connect: {
-                id: "ckgak0o36006y0736nf4jr7rl"
-            }
-        }
-    }
-}, '{id title body published}').then((data) => {
-    console.log(data)
-    return prisma.query.users(null, '{id name posts { id title}}')
+//--------------
+// CREA UN POST
+//---------------
+
+
+// prisma.mutation.createPost({
+//     data: {
+//         title: "Esto esta desactivado",
+//         body: "",
+//         published: false,
+//         author: {
+//             connect: {
+//                 id: "ckgak0o36006y0736nf4jr7rl"
+//             }
+//         }
+//     }
+// }, '{id title body published}').then((data) => {
+//     console.log(data)
+//     return prisma.query.users(null, '{id name posts { id title}}')
+// }).then((data) => {
+//     console.log(JSON.stringify(data, undefined, 2))
+// })
+
+//--------------
+// UPDATE UN POST
+//---------------
+
+prisma.mutation.updatePost({
+    where: { id: "ckgc3jigm02jk0736ciqj10tr" },
+    data: { title: "ESTO ACTUALIZADO", published: false, body: "", }
+}, '{ id }').then((data) => {
+    return prisma.query.posts(null, '{id title body published }')
 }).then((data) => {
-    console.log(JSON.stringify(data, undefined, 2))
+    console.log(data)
 })
