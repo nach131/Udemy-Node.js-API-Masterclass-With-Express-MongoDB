@@ -153,5 +153,9 @@ https://github.com/Urigo/graphql-cli
 npm install graphql-cli
 
 Para crear el schema despues deploy prisma
- 
+
 npm run get-schema
+
+## 5.11. Using Prisma Bindings
+
+Usar prisma para fecht de datos en consola
