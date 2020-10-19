@@ -171,3 +171,6 @@ Crea Post Update post
 ## 5.14. Checking If Data Exists Using Prisma Bindings
 
 Comprueba si el pots o comment exiten => ejecuta creacion comment o update pots
+
+## 5.15. Customizing Type Relationships
+Modificado datamodel para poder borrar un Usuario y se borren todos sus post y comentarios

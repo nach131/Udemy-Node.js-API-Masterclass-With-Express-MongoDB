@@ -82,9 +82,9 @@ const updatePostForUser = async (postId, data) => {
 
 // EJECUTA EL UPDATE
 
-updatePostForUser("ckgg926qt04y20736uyf75efv", { title: "Upadete Node Prisma", published: false }).then((user) => {
-    console.log(JSON.stringify(user, undefined, 2))
-}).catch((error) => {
-    console.log(error.message)
-})
+// updatePostForUser("ckgg926qt04y20736uyf75efv", { title: "Upadete Node Prisma", published: false }).then((user) => {
+//     console.log(JSON.stringify(user, undefined, 2))
+// }).catch((error) => {
+//     console.log(error.message)
+// })
 
