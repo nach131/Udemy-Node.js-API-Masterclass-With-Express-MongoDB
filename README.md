@@ -167,3 +167,7 @@ Crea un post desde node y actualizar Post
 ## 5.13. Using AsyncAwait with Prisma Bindings
 
 Crea Post Update post
+
+## 5.14. Checking If Data Exists Using Prisma Bindings
+
+Comprueba si el pots o comment exiten => ejecuta creacion comment o update pots
