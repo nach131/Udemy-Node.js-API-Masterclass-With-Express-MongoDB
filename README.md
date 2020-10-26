@@ -1,5 +1,7 @@
-# Udemy-Node.js-API-Masterclass-With-Express-MongoDB
+# Udemy - The Modern GraphQL Bootcamp (Advanced Node.js)
 
+<span style="color:red">**informatica/00_Lynda/_GraphQL/**</span>
+***
 
 ## 2.5. Setting up Babel
 https://babeljs.io/
@@ -15,6 +17,7 @@ export desde un archivo importado en el index
 exportar con una propiedad
 ## 2.7. Creating Your Own GraphQL API
 Toda la documentacion: 
+
 https://spec.graphql.org/
 
 https://github.com/prisma-labs/graphql-yoga
@@ -60,6 +63,7 @@ Relacines comment con post
 # 3 Basic Mutations
 ## 3.2. Creating Data with Mutations Part I
 npm uuid (General id)
+
 https://www.npmjs.com/package/uuid
 
 Crea un usuario
@@ -174,3 +178,17 @@ Comprueba si el pots o comment exiten => ejecuta creacion comment o update pots
 
 ## 5.15. Customizing Type Relationships
 Modificado datamodel para poder borrar un Usuario y se borren todos sus post y comentarios
+
+## 5.16. Modeling a Review System with Prisma Set Up.es
+Crear un nuevo proyecto en prisma de libros y reseñas
+
+prisma-reiew-website
+
+http://localhost:4466/reviews/default
+
+## 5.17. Modeling a Review System with Prisma Solution
+Crear libro, usuario y resenya
+
+Borrar usuario y todas sus resenyas
+
+Borrar libro y todas sus resenyas
