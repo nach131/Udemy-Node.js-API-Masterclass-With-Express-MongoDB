@@ -192,3 +192,11 @@ Crear libro, usuario y resenya
 Borrar usuario y todas sus resenyas
 
 Borrar libro y todas sus resenyas
+
+# 6. Authentication with GraphQL
+## 6.1. Section Intro Authentication with GraphQL
+Introducción
+## 6.2. Adding Prisma into GraphQL Queries
+Conecta GraphQL localhost:4000 con BD Postgesql con prisma
+
+query users y posts
