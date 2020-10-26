@@ -19,17 +19,20 @@ const Query = {
 
   posts(parent, args, { prisma }, info) {
 
-    return prisma.query.posts(null, info)
+    const opArgs = {}
 
-    // if (!args.query) {
-    //   return db.posts
-    // }
+    if (args.query) {
+      opArgs.where = {
+        OR: [{
+          title_contains: args.query
+        }, {
+          body_contains: args.query
+        }]
+      }
+    }
 
-    // return db.posts.filter((post) => {
-    //   const isTitleMatch = post.title.toLowerCase().includes(args.query.toLowerCase())
-    //   const isBodyMatch = post.body.toLowerCase().includes(args.query.toLowerCase())
-    //   return isTitleMatch || isBodyMatch
-    // })
+    return prisma.query.posts(opArgs, info)
+
   },
   comments(parent, args, { db }, info) {
     if (!args.query) {

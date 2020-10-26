@@ -252,3 +252,5 @@ query users y posts
 ## 6.3. Integrating Operation Arguments
 
 Filtra la query user segun el numbre del usuario
+
+Filtras la query post segun el titulo o el body
