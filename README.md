@@ -258,3 +258,9 @@ Filtras la query post segun el titulo o el body
 ## 6.4. Refactoring Custom Type Resolvers
 
 Modificaciones Query para con prisma para poder fecth de los datos de la BD
+
+## 6.5. Adding Prisma into GraphQL Mutations
+
+Modifcar Mutation para que conecte con los datos de las BD
+
+Crear Usuario, borra usuario de la BD
