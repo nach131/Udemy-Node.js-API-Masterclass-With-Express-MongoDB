@@ -58,27 +58,22 @@ const Mutation = {
 
 
 
-  createComment(parent, args, { db, pubsub }, info) {
-    const userExists = db.users.some((user) => user.id === args.data.author) // esto es lo mismo pero reducido
-    const postExists = db.posts.some((post) => {
-      return post.id === args.data.post && post.published === true
-    })
-
-    if (!userExists || !postExists) {
-      throw new Error('No se a encontrado Usuario y Post')
-    }
-    const comment = {
-      id: uuidv4(),
-      ...args.data
-    }
-    db.comments.push(comment)
-    pubsub.publish(`comment ${args.data.post}`, {
-      comment: {
-        mutation: 'CREADO',
-        data: comment
+  createComment(parent, args, { prisma }, info) {
+    return prisma.mutation.createComment({
+      data: {
+        text: args.data.text,
+        author: {
+          connect: {
+            id: args.data.author
+          }
+        },
+        post: {
+          connect: {
+            id: args.data.post
+          }
+        }
       }
-    })
-    return comment
+    }, info)
   },
 
   deleteComment(parent, args, { db, pubsub }, info) {
@@ -98,24 +93,13 @@ const Mutation = {
     return deletedComment
   },
 
-  updateComment(parent, args, { db, pubsub }, info) {
-    const { id, data } = args
-    const comment = db.comments.find((comment) => comment.id === id)
-
-    if (!comment) {
-      throw new Error("Commentario no encontrado")
-    }
-
-    if (typeof data.body === 'string') {
-      comment.body = data.body
-    }
-    pubsub.publish(`comment ${comment.post}`, {
-      comment: {
-        mutation: 'ACTUALIZADO',
-        data: comment
-      }
-    })
-    return comment
+  updateComment(parent, args, { prisma }, info) {
+    return prisma.mutation.updateComment({
+      where: {
+        id: args.id
+      },
+      data: args.data
+    }, info)
   }
 }
 export { Mutation as default }
