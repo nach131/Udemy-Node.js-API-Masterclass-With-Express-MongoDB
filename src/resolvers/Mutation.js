@@ -42,62 +42,18 @@ const Mutation = {
     return prisma.mutation.deletePost({
       where: {
         id: args.id
-      },
-      data: args.data
+      }
     }, info)
 
   },
 
-  updatePost(parent, args, { db, pubsub }, info) {
-    const { id, data } = args
-    const post = db.posts.find((post) => post.id === id)
-    const originalPost = { ...post }
+  updatePost(parent, args, { prisma }, info) {
+    return prisma.mutation.updatePost({
+      where: {
+        id: args.id
+      }, data: args.data
+    }, info)
 
-    if (!post) {
-      throw new Error('Post no encontrado')
-    }
-
-    if (typeof data.title === 'string') {
-      post.title = data.title
-    }
-
-    if (typeof data.body === 'string') {
-      post.body = data.body
-    }
-
-    if (typeof data.published === 'boolean') {
-      post.published = data.published
-
-      if (originalPost.published && !post.published) {
-        //deleted
-        pubsub.publish('post', {
-          post: {
-            mutation: 'BORRADO',
-            data: originalPost
-          }
-        })
-
-      } else if (!originalPost.published && post.published) {
-        // Creado
-        pubsub.publish('post', {
-          post: {
-            mutation: 'CREADO',
-            data: post
-          }
-        })
-
-      }
-    } else if (post.published) {
-      // updated
-      pubsub.publish('post', {
-        post: {
-          mutation: 'ACTUALIZADO',
-          data: post
-        }
-      })
-    }
-
-    return post
   },
 
 

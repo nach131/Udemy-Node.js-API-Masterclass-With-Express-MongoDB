@@ -276,3 +276,5 @@ Ejercicio createPost con prisma
 Ejercicio
 
 Mutation deletePost con prisma
+
+Mutation updatePost con prisma
