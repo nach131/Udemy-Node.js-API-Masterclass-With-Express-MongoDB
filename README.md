@@ -270,3 +270,9 @@ Crear Usuario, borra usuario de la BD
 Mutation updateUser, conectado al a BD con prisma
 
 Ejercicio createPost con prisma
+
+## 6.7. Adding Prisma into GraphQL Update Mutations Part II
+
+Ejercicio
+
+Mutation deletePost con prisma

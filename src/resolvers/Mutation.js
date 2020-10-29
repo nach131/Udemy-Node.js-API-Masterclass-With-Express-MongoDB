@@ -37,25 +37,15 @@ const Mutation = {
       }
     }, info)
   },
-  deletePost(parent, args, { db, pubsub }, info) {
-    const postIndex = db.posts.findIndex((post) => post.id === args.id)
-    if (postIndex === -1) {
-      throw new Error('Post no encontrado')
-    }
-    const [post] = db.posts.splice(postIndex, 1)
+  deletePost(parent, args, { prisma }, info) {
 
-    db.comments = db.comments.filter((comment) => comment.post !== args.id)
+    return prisma.mutation.deletePost({
+      where: {
+        id: args.id
+      },
+      data: args.data
+    }, info)
 
-    if (post.published) {
-      pubsub.publish('post', {
-        post: {
-          mutation: 'ESTE POST FUE BORRADO',
-          data: post
-        }
-      })
-    }
-
-    return post
   },
 
   updatePost(parent, args, { db, pubsub }, info) {
