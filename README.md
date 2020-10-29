@@ -264,3 +264,9 @@ Modificaciones Query para con prisma para poder fecth de los datos de la BD
 Modifcar Mutation para que conecte con los datos de las BD
 
 Crear Usuario, borra usuario de la BD
+
+## 6.6. Adding Prisma into GraphQL Update Mutations Part I
+
+Mutation updateUser, conectado al a BD con prisma
+
+Ejercicio createPost con prisma
